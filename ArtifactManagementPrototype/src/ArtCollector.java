@@ -16,7 +16,7 @@ public class ArtCollector extends Person implements Login {
         this.registeredAccount = registeredAccount;
     }
 
-    public ArtCollector(Set<Artifact> myArtifacts, Boolean registeredAccount)
+    public ArtCollector(ArrayList<Artifact> myArtifacts, Boolean registeredAccount)
     {
         this.myArtifacts = myArtifacts;
         this.registeredAccount = registeredAccount;
@@ -26,7 +26,7 @@ public class ArtCollector extends Person implements Login {
      * 
      */
 
-    private Set<Artifact> myArtifacts;
+    private ArrayList<Artifact> myArtifacts;
 
     /**
      * 
@@ -112,11 +112,11 @@ public class ArtCollector extends Person implements Login {
         return "";
     }
 
-    public Set<Artifact> getMyArtifacts() {
+    public ArrayList<Artifact> getMyArtifacts() {
         return myArtifacts;
     }
 
-    public void setMyArtifacts(Set<Artifact> myArtifacts) {
+    public void setMyArtifacts(ArrayList<Artifact> myArtifacts) {
         this.myArtifacts = myArtifacts;
     }
 

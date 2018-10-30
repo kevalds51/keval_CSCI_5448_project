@@ -52,8 +52,8 @@ public class Artifact {
      * @return
      */
     public String printArtifactDetails() {
-        // TODO implement here
-        return "";
+        String details = this.getTitle()+" by "+this.artistName + ", worth " + this.getValue() + " is currently " +this.getStatus().getCurrentStatus();
+        return details;
     }
 
 

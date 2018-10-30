@@ -12,7 +12,7 @@ public class Museum {
     public Museum() {
     }
 
-    public Museum(String name, Set<Artifact> artifactCollection, Set<Auction> museumAuctions, Set<SaleRequest> saleRequests, Set<Transaction> transactions) {
+    public Museum(String name, ArrayList<Artifact> artifactCollection, ArrayList<Auction> museumAuctions, ArrayList<SaleRequest> saleRequests, ArrayList<Transaction> transactions) {
         this.name = name;
         this.artifactCollection = artifactCollection;
         this.museumAuctions = museumAuctions;
@@ -28,30 +28,32 @@ public class Museum {
     /**
      * 
      */
-    private Set<Artifact> artifactCollection;
+    private ArrayList<Artifact> artifactCollection;
 
     /**
      * 
      */
-    private Set<Auction> museumAuctions;
+    private ArrayList<Auction> museumAuctions;
 
     /**
      * 
      */
-    private Set<SaleRequest> saleRequests;
+    private ArrayList<SaleRequest> saleRequests;
 
     /**
      * 
      */
-    private Set<Transaction> transactions;
+    private ArrayList<Transaction> transactions;
 
 
     /**
      * @return
      */
-    public Set<String> printArtifactCollection() {
+    public void printArtifactCollection() {
         // TODO implement here
-        return null;
+        for (Artifact aTemp : this.artifactCollection) {
+            System.out.println(aTemp.printArtifactDetails());
+        }
     }
 
     /**
@@ -93,35 +95,35 @@ public class Museum {
         this.name = name;
     }
 
-    public Set<Artifact> getArtifactCollection() {
+    public ArrayList<Artifact> getArtifactCollection() {
         return artifactCollection;
     }
 
-    public void setArtifactCollection(Set<Artifact> artifactCollection) {
+    public void setArtifactCollection(ArrayList<Artifact> artifactCollection) {
         this.artifactCollection = artifactCollection;
     }
 
-    public Set<Auction> getMuseumAuctions() {
+    public ArrayList<Auction> getMuseumAuctions() {
         return museumAuctions;
     }
 
-    public void setMuseumAuctions(Set<Auction> museumAuctions) {
+    public void setMuseumAuctions(ArrayList<Auction> museumAuctions) {
         this.museumAuctions = museumAuctions;
     }
 
-    public Set<SaleRequest> getSaleRequests() {
+    public ArrayList<SaleRequest> getSaleRequests() {
         return saleRequests;
     }
 
-    public void setSaleRequests(Set<SaleRequest> saleRequests) {
+    public void setSaleRequests(ArrayList<SaleRequest> saleRequests) {
         this.saleRequests = saleRequests;
     }
 
-    public Set<Transaction> getTransactions() {
+    public ArrayList<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Set<Transaction> transactions) {
+    public void setTransactions(ArrayList<Transaction> transactions) {
         this.transactions = transactions;
     }
 }

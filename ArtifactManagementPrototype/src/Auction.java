@@ -12,7 +12,7 @@ public class Auction {
     public Auction() {
     }
 
-    public Auction(Integer auctionID, Date auctionDate, Auctioneer auctioneer, Artifact artifact, Set<Bid> bids, Bid result) {
+    public Auction(Integer auctionID, Date auctionDate, Auctioneer auctioneer, Artifact artifact, ArrayList<Bid> bids, Bid result) {
         this.auctionID = auctionID;
         this.auctionDate = auctionDate;
         this.auctioneer = auctioneer;
@@ -42,7 +42,7 @@ public class Auction {
     /**
      * 
      */
-    private Set<Bid> bids;
+    private ArrayList<Bid> bids;
 
     /**
      * 
@@ -54,7 +54,7 @@ public class Auction {
     /**
      * @return
      */
-    public Set<String> printAuctionDetails() {
+    public ArrayList<String> printAuctionDetails() {
         // TODO implement here
         return null;
     }
@@ -109,11 +109,11 @@ public class Auction {
         this.artifact = artifact;
     }
 
-    public Set<Bid> getBids() {
+    public ArrayList<Bid> getBids() {
         return bids;
     }
 
-    public void setBids(Set<Bid> bids) {
+    public void setBids(ArrayList<Bid> bids) {
         this.bids = bids;
     }
 
