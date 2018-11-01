@@ -18,6 +18,8 @@ public class Museum {
         this.museumAuctions = museumAuctions;
         this.saleRequests = saleRequests;
         this.transactions = transactions;
+
+        this.museumAuctions = new ArrayList<Auction>();
     }
 
     /**
@@ -50,19 +52,23 @@ public class Museum {
      * @return
      */
     public void printArtifactCollection() {
-        // TODO implement here
+        System.out.println("\n--- The Museum Catalogue (start) ---\n");
+        int c = 0;
         for (Artifact aTemp : this.artifactCollection) {
-            System.out.println(aTemp.printArtifactDetails());
+            System.out.printf("(%d) %s%n", ++c, aTemp.printArtifactDetails());
         }
+        System.out.println("\n--- The Museum Catalogue (end) ---\n");
     }
 
-    /**
-     * @param artifact 
-     * @return
-     */
-    public Auction getArtifactAuction(Artifact artifact) {
-        // TODO implement here
-        return null;
+    public void printOpenAuctions(){
+        System.out.println("\n--- Upcoming Auctions (start) ---\n");
+        int c = 1;
+        for (Auction atn : this.museumAuctions) {
+            System.out.print("("+c+") ");
+            atn.printAuctionDetails();
+            c++;
+        }
+        System.out.println("\n\n--- Upcoming Auctions (end) ---\n");
     }
 
     /**
@@ -85,6 +91,11 @@ public class Museum {
     public String processSaleRequest(Artifact artifact, ArtCollector seller, Integer price) {
         // TODO implement here
         return "";
+    }
+
+    public void addArtifact(Artifact artifact)
+    {
+        this.artifactCollection.add(artifact);
     }
 
     public String getName() {

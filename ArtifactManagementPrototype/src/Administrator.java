@@ -9,7 +9,8 @@ public class Administrator extends MuseumStaff {
     /**
      * Default constructor
      */
-    public Administrator(String masterKey) {
+    public Administrator(String name, Integer userID, Integer age, String address, String password, Integer annualSalary, Date joinDate, String masterKey) {
+        super(name, userID, age, address, password, annualSalary, joinDate);
         this.masterKey = masterKey;
     }
 

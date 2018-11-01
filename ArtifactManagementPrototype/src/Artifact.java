@@ -26,6 +26,11 @@ public class Artifact {
     private Integer artifactID;
 
     /**
+     *
+     */
+    private Integer auctionID = null;
+
+    /**
      * 
      */
     private String title = "unknown";
@@ -52,10 +57,28 @@ public class Artifact {
      * @return
      */
     public String printArtifactDetails() {
-        String details = this.getTitle()+" by "+this.artistName + ", worth " + this.getValue() + " is currently " +this.getStatus().getCurrentStatus();
+        String details = this.getTitle()+" ("+this.getArtifactID()+")"+" by "+this.artistName + ", worth " + this.getValue() + " is currently " +this.getStatus().getCurrentStatus();
         return details;
     }
 
+    /**
+     * @param artifact
+     * @return
+     */
+    public Integer getArtifactAuctionID(Artifact artifact) {
+        // TODO implement here
+        if (artifact.getStatus().getCurrentStatus().equalsIgnoreCase("closed"))
+        {
+            return null;
+        }
+
+        return auctionID;
+    }
+
+
+    public void setAuctionID(Integer auctionID) {
+        this.auctionID = auctionID;
+    }
 
     public Integer getArtifactID() {
         return artifactID;

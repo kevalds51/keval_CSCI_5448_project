@@ -4,12 +4,20 @@ import java.util.*;
 /**
  * 
  */
-public abstract class Person implements Login {
+public abstract class Person implements  Login{
 
     /**
      * Default constructor
      */
-    public Person() {
+    public Person(){
+    }
+
+    public Person(String name, Integer userID, Integer age, String address, String password) {
+        this.name = name;
+        this.userID = userID;
+        this.address = address;
+        this.age = age;
+        this.password = password;
     }
 
     /**
@@ -46,13 +54,17 @@ public abstract class Person implements Login {
     }
 
     /**
-     * @param userID 
-     * @param pass 
+     * @param userID
+     * @param pass
      * @return
      */
     public String loginUser(Integer userID, String pass) {
-        // TODO implement here
-        return "";
+        if (this.getUserID().equals(userID) && this.getPassword().equals(pass))
+        {
+            return this.name+" Login Successful";
+        }
+
+        return "Incorrect UserID/Password";
     }
 
     public String getName() {

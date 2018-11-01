@@ -12,7 +12,10 @@ public abstract class MuseumStaff extends Person {
     public MuseumStaff() {
     }
 
-    public MuseumStaff(Integer annualSalary, Date joinDate) {
+    public MuseumStaff(String name, Integer userID, Integer age, String address, String password, Integer annualSalary, Date joinDate) {
+
+        super(name, userID, age, address, password);
+
         this.annualSalary = annualSalary;
         this.joinDate = joinDate;
     }

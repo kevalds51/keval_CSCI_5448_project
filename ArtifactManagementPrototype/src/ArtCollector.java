@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class ArtCollector extends Person implements Login {
+public class ArtCollector extends Person implements  Login{
 
     /**
      * Default constructor
@@ -12,34 +12,42 @@ public class ArtCollector extends Person implements Login {
     public ArtCollector() {
     }
 
-    public ArtCollector(Boolean registeredAccount) {
-        this.registeredAccount = registeredAccount;
-    }
-
-    public ArtCollector(ArrayList<Artifact> myArtifacts, Boolean registeredAccount)
-    {
-        this.myArtifacts = myArtifacts;
-        this.registeredAccount = registeredAccount;
+    public ArtCollector(String name, Integer userID, Integer age, String address, String password){
+        super(name, userID, age, address, password);
     }
 
     /**
      * 
      */
-
-    private ArrayList<Artifact> myArtifacts;
+    private ArrayList<Artifact> myArtifacts = null;
 
     /**
      * 
      */
-    private Boolean registeredAccount;
+    private Boolean registeredAccount = false;
 
+    public String loginUser(Integer userID, String pass) {
+        if (this.registeredAccount == false){
+            return "Unregistered Account, Please register and try again.";
+        }
+
+        else if (this.getUserID().equals(userID) && this.getPassword().equals(pass))
+        {
+            return "Collector "+this.getName()+" Login Successful";
+        }
+
+        return "Incorrect UserID/Password";
+    }
 
     /**
      * @return
      */
     public String registerCollector() {
-        // TODO implement here
-        return "";
+        if (this.registeredAccount == true){
+            return "Account already Active.";
+        }
+        this.registeredAccount = true;
+        return "Account Registered";
     }
 
     /**
@@ -56,9 +64,8 @@ public class ArtCollector extends Person implements Login {
      * @param museum 
      * @return
      */
-    public Set<String> viewMuseumCollection(Museum museum) {
-        // TODO implement here
-        return null;
+    public void viewMuseumCollection(Museum museum) {
+        museum.printArtifactCollection();
     }
 
     /**
@@ -98,16 +105,6 @@ public class ArtCollector extends Person implements Login {
      * @return
      */
     public String viewMyTransactions(Museum museum) {
-        // TODO implement here
-        return "";
-    }
-
-    /**
-     * @param userID 
-     * @param pass 
-     * @return
-     */
-    public String loginUser(Integer userID, String pass) {
         // TODO implement here
         return "";
     }

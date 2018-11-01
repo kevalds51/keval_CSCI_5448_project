@@ -10,6 +10,11 @@ public class Curator extends MuseumStaff {
      * Default constructor
      */
     public Curator() {
+
+    }
+
+    public Curator(String name, Integer userID, Integer age, String address, String password, Integer annualSalary, Date joinDate) {
+        super(name, userID, age, address, password, annualSalary, joinDate);
     }
 
     /**
@@ -23,13 +28,21 @@ public class Curator extends MuseumStaff {
     private Integer highestTransactionValue = 0;
 
     /**
-     * @param artifact 
+     * @param artID
      * @param artSt 
      * @return
      */
-    public void updateArtifactStatus(Artifact artifact, String artSt) {
-        // TODO implement here
-//        return null;
+    public void declareAuction(Museum aMuseum, int artID, artifactStatus artSt, Date aDate, int auctioneerID, int auctionID) {
+        for (Artifact anArt : aMuseum.getArtifactCollection())
+        {
+            if (anArt.getArtifactID() == artID)
+            {
+                anArt.setStatus(artSt);
+
+                Auction anAuct = new Auction(auctionID, aDate, auctioneerID, anArt);
+                aMuseum.getMuseumAuctions().add(anAuct);
+            }
+        }
     }
 
     /**
