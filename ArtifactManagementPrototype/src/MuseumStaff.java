@@ -33,9 +33,9 @@ public abstract class MuseumStaff extends Person {
     /**
      * @return
      */
-    public String printEmploymentTime() {
-        // TODO implement here
-        return "";
+    public String getEmploymentTime() {
+        int years = (int) (((new Date().getTime()) - this.joinDate.getTime())/(365.25*24*60*60*1000));
+        return String.format(this.getName()+" has beed employed for: %d year(s)", years);
     }
 
     public Integer getAnnualSalary() {

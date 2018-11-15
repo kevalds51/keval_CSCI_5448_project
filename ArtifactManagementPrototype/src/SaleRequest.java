@@ -44,8 +44,9 @@ public class SaleRequest {
      * @return
      */
     public String printRequestDetails() {
-        // TODO implement here
-        return "";
+        String detailString;
+        detailString = "Request ID ("+this.getRequestID()+") " + "Seller ID ("+this.getCollector().getUserID()+") "+ "Artiface ID ("+this.getArtifact().getArtifactID()+") "+ "Quoted price ("+this.getPrice()+") ";
+        return detailString;
     }
 
     public Integer getRequestID() {

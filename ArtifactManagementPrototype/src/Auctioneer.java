@@ -10,6 +10,8 @@ public class Auctioneer extends MuseumStaff {
      * Default constructor
      */
     public Auctioneer() {
+        this.auctionsHeld = 0;
+        this.ratings = 0;
     }
 
     public Auctioneer(Integer auctionsHeld, Integer ratings) {
@@ -31,9 +33,22 @@ public class Auctioneer extends MuseumStaff {
     /**
      * @return
      */
-    public String printCareerStats() {
-        // TODO implement here
-        return "";
+    public String getCareerStats() {
+        String stats;
+        stats = "Auctioneer: ("+this.getName()+") has held ("+this.getAuctionsHeld() + ") auctions with (" +this.getRatings();
+        return stats;
+    }
+
+    /**
+     * @return
+     * @param auction
+    **/
+    public String hostAuction(Auction auction){
+        Bid result = auction.goLive();
+        if (result.equals(null)){
+            return "No acceptable Bids";
+        }
+        return "The winner is: ("+result.getBidder().getName()+") with a bid of: ("+result.getBidAmount()+")";
     }
 
     public Integer getAuctionsHeld() {

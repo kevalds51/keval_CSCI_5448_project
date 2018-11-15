@@ -19,7 +19,7 @@ public class ArtCollector extends Person implements  Login{
     /**
      * 
      */
-    private ArrayList<Artifact> myArtifacts = null;
+    private ArrayList<Artifact> myArtifacts = new ArrayList<Artifact>();
 
     /**
      * 
@@ -69,35 +69,37 @@ public class ArtCollector extends Person implements  Login{
     }
 
     /**
-     * @param museum 
-     * @param artifact 
+     * @param museum
+     * @param bidvalue
      * @return
      */
-    public String viewMuseumArtifact(Museum museum, Artifact artifact) {
-        // TODO implement here
+    public String submitBid(Museum museum, int auid, Integer bidvalue) {
+        museum.processBid(auid, this, bidvalue);
         return "";
     }
 
     /**
      * @param museum 
-     * @param artifact 
-     * @param bidvalue 
-     * @return
-     */
-    public String submitBid(Museum museum, Artifact artifact, Integer bidvalue) {
-        // TODO implement here
-        return "";
-    }
-
-    /**
-     * @param museum 
-     * @param artifact 
+     * @param myArtID
      * @param sellPrice 
      * @return
      */
-    public String submitSaleRequest(Museum museum, Artifact artifact, Integer sellPrice) {
-        // TODO implement here
-        return "";
+    public String submitSaleRequest(Museum museum, int myArtID, Integer sellPrice) {
+        Artifact thisArt = null;
+        for (Artifact art: this.getMyArtifacts()) {
+            if(art.getArtifactID() == myArtID)
+            {
+                thisArt = art;
+                break;
+            }
+        }
+
+        if (thisArt == null){
+            return "No such artifact found";
+        }
+
+        String response = museum.addSaleRequest(thisArt,this, sellPrice);
+        return response;
     }
 
     /**

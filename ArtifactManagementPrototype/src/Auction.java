@@ -12,17 +12,18 @@ public class Auction {
     public Auction() {
     }
 
-    public Auction(int auctionID, Date auctionDate, int auctioneerID, Artifact artifact) {
+    public Auction(int auctionID, Date auctionDate, Auctioneer auctioneer, Artifact artifact) {
         this.auctionID = auctionID;
         this.auctionDate = auctionDate;
-        this.auctioneerID = auctioneerID;
+        this.auctioneer = auctioneer;
         this.artifact = artifact;
+        this.bids = new ArrayList<Bid>();
     }
 
-    public Auction(Integer auctionID, Date auctionDate, int auctioneerID, Artifact artifact, ArrayList<Bid> bids, Bid result) {
+    public Auction(Integer auctionID, Date auctionDate, Auctioneer auctioneer, Artifact artifact, ArrayList<Bid> bids, Bid result) {
         this.auctionID = auctionID;
         this.auctionDate = auctionDate;
-        this.auctioneerID = auctioneerID;
+        this.auctioneer = auctioneer;
         this.artifact = artifact;
         this.bids = bids;
         this.result = result;
@@ -41,7 +42,7 @@ public class Auction {
     /**
      * 
      */
-    private int auctioneerID;
+    private Auctioneer auctioneer;
 
     /**
      * 
@@ -65,21 +66,26 @@ public class Auction {
      * @return
      */
     public void addBid(ArtCollector bidder, Integer value) {
-        // TODO implement here
-//        return null;
+        this.bids.add(new Bid(bidder, value));
     }
 
     /**
      * @return
      */
     public Bid goLive() {
-        // TODO implement here
-        return null;
+        Bid winner = null;
+        int winnerValue = 0;
+        for (Bid aBid: this.bids) {
+            if (aBid.getBidAmount()>winnerValue){
+                winnerValue = aBid.getBidAmount();
+                winner = aBid;
+            }
+        }
+        return winner;
     }
 
     public void printAuctionDetails(){
         String details = "Auction (ID = "+this.auctionID+")"+" of "+this.artifact.getTitle()+" ("+this.artifact.getArtifactID() + "), worth " + this.artifact.getValue() + " is scheduled on "+ this.auctionDate.toString();
-//        return details;
         System.out.printf(details);
     }
 
@@ -99,12 +105,12 @@ public class Auction {
         this.auctionDate = auctionDate;
     }
 
-    public int getAuctioneer() {
-        return auctioneerID;
+    public Auctioneer getAuctioneer() {
+        return auctioneer;
     }
 
-    public void setAuctioneer(int auctioneer) {
-        this.auctioneerID = auctioneer;
+    public void setAuctioneer(Auctioneer auctioneer) {
+        this.auctioneer = auctioneer;
     }
 
     public Artifact getArtifact() {

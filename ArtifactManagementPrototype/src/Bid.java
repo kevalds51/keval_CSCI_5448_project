@@ -24,15 +24,6 @@ public class Bid {
      */
     private Integer bidAmount;
 
-
-    /**
-     * @return
-     */
-    public String printBidDetails() {
-        // TODO implement here
-        return "";
-    }
-
     public ArtCollector getBidder() {
         return bidder;
     }

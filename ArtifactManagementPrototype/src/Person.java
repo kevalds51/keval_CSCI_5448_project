@@ -49,7 +49,7 @@ public abstract class Person implements  Login{
      * @return
      */
     public String printPersonDetails() {
-        // TODO implement here
+        System.out.println("User ID: ("+this.getUserID()+") Name: ("+this.getName()+") Age: ("+this.getAge()+") Address: ("+this.getAddress()+")\n");
         return "";
     }
 

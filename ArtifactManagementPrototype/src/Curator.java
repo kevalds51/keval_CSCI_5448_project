@@ -32,17 +32,20 @@ public class Curator extends MuseumStaff {
      * @param artSt 
      * @return
      */
-    public void declareAuction(Museum aMuseum, int artID, artifactStatus artSt, Date aDate, int auctioneerID, int auctionID) {
+    public Auction declareAuction(Museum aMuseum, int artID, artifactStatus artSt, Date aDate, Auctioneer auctioneer, int auctionID) {
         for (Artifact anArt : aMuseum.getArtifactCollection())
         {
             if (anArt.getArtifactID() == artID)
             {
                 anArt.setStatus(artSt);
 
-                Auction anAuct = new Auction(auctionID, aDate, auctioneerID, anArt);
+                Auction anAuct = new Auction(auctionID, aDate, auctioneer, anArt);
                 aMuseum.getMuseumAuctions().add(anAuct);
+                return anAuct;
             }
         }
+
+        return null;
     }
 
     /**
@@ -50,8 +53,8 @@ public class Curator extends MuseumStaff {
      * @return
      */
     public String evaulateSalesRequests(Museum museum) {
-        // TODO implement here
-        return "";
+        String report = museum.processSaleRequests();
+        return report;
     }
 
     public Integer getDealCounts() {

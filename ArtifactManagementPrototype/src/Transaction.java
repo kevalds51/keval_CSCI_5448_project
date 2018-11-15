@@ -17,12 +17,19 @@ public class Transaction {
         this.amount = amount;
         this.artifact = artifact;
         this.adminProcessed = adminProcessed;
+
+        this.calcProfit();
     }
 
     /**
      * 
      */
     private Integer transactionID;
+
+    /**
+     *
+     */
+    private double profit;
 
     /**
      * 
@@ -56,11 +63,38 @@ public class Transaction {
 
 
     /**
-     * @return
+     * @return detailString
      */
-    public void viewTranactionDetails() {
-        // TODO implement here
-//        return null;
+    public String viewTranactionDetails()
+    {
+        // TODO: Potential to use the strategy pattern here to check if its a sale or a purchase
+        String detailString="";
+
+        if (this.getAuctionSale())
+        {
+            detailString = "("+this.getAdminProcessed()+") Transaction ID: ("+this.getTransactionID()+") "+"Artifact ID: ("+this.getArtifact().getArtifactID()+") "+"Amount: ("+this.getAmount()+") "+" Auction winner:" + this.getOtherParty();
+        }
+
+        if (this.getPurchase())
+        {
+            detailString = "("+this.getAdminProcessed()+") Transaction ID: ("+this.getTransactionID()+") "+"Artifact ID: ("+this.getArtifact().getArtifactID()+") "+"Amount: ("+this.getAmount()+") "+" Seller:" + this.getOtherParty();
+        }
+
+        return detailString;
+    }
+
+    public void calcProfit()
+    {
+        // TODO: Potential to use the strategy pattern here to check if its a sale or a purchase
+        if (this.getPurchase())
+        {
+            this.profit = this.artifact.getValue()-this.amount;
+        }
+
+        else if (this.getAuctionSale())
+        {
+            this.profit = this.amount - this.artifact.getValue();
+        }
     }
 
     public Integer getTransactionID() {

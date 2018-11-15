@@ -20,35 +20,74 @@ public class Driver {
         s1.add(new Artifact(1007, "Dragon Painting", "Lee", closed, 437));
 
         // Establish a Museum
-        Museum myMuseum = new Museum("CU Museum", s1, null, null, null);
+        Museum myMuseum = new Museum("CU Museum", s1);
 
         // Add a Curator and an Administrator
-        Curator theCurator = new Curator("A B Curator", 777, 44, "123 Colorado Ave", "ezpass", 100000, new Date());
-        Administrator admin = new Administrator("X Y Admin", 420, 42, "223 Colorado Ave", "!ezpass", 10000, new Date(), "2ezpass");
+        Curator theCurator = new Curator("A B Curator", 777, 44, "123 Colorado Ave", "ezpass", 100000, new Date(1504587433443L));
+        Administrator admin = new Administrator("X Y Admin", 420, 42, "223 Colorado Ave", "!ezpass", 10000, new Date(1404587493443L), "2ezpass");
 
         // Create a Collector
-        ArtCollector collector1 = new ArtCollector("Rich Guy 1", 123, 22, "Boston", "poor");
+        ArtCollector collector1 = new ArtCollector("Rich Guy 1", 123, 22, "Boston", "poor1");
+        ArtCollector collector2 = new ArtCollector("Rich Guy 2", 124, 23, "Lowell", "poor2");
 
         // The Curator and Administrator login.
         System.out.println(theCurator.loginUser(777, "ezpass"));
         System.out.println(admin.loginUser(420, "!ezpass"));
 
         // Register and Loing the Collector
-        System.out.println(collector1.loginUser(123, "poor"));
+        System.out.println(collector1.loginUser(123, "poor1"));
         System.out.println(collector1.registerCollector());
         System.out.println(collector1.loginUser(123, "po3or"));
-        System.out.println(collector1.loginUser(123, "poor"));
+        System.out.println(collector1.loginUser(123, "poor1"));
+
+        System.out.println(collector2.registerCollector());
+        System.out.println(collector2.loginUser(124, "poor2"));
+
+        // Print the employee details
+        System.out.println(theCurator.getJoinDate());
+        System.out.println(theCurator.getEmploymentTime());
+        System.out.println(admin.getJoinDate());
+        System.out.println(admin.getEmploymentTime());
 
         // The Collector can access the Museum collection.
         collector1.viewMuseumCollection(myMuseum);
 
-        // The curator decides to put up an Artifact for auction!
-        // Museum, auctioneerID, date, aucitonID, artifactID
-        theCurator.declareAuction(myMuseum,  1002, open,new Date(), 101, 1000);
-
         // The collector wants to view the Museum collection after curator's update
         collector1.viewMuseumCollection(myMuseum);
+
+        // ---- Adding items to the collectors inventory ---- //
+
+        // Add a few artifacts to the collector
+        ArrayList<Artifact> s2 = new ArrayList<Artifact>();
+        s2.add(new Artifact(1031, "XYZ's Vase", "X", closed, 10000));
+        s2.add(new Artifact(1039, "PQR's Vase", "P", closed, 20001));
+        collector1.setMyArtifacts(s2);
+
+        // ---- Collector wants to sell something to the museum ---- //
+
+        // The collector send a request to sell one of his artifacts.
+        System.out.println(collector1.submitSaleRequest(myMuseum, 1031, 10000));
+        System.out.println("# Sale requests: "+myMuseum.getSaleRequests().size());
+        // The collector decides to send another request with higher sell price.
+        System.out.println(collector1.submitSaleRequest(myMuseum, 1031, 12000));
+        System.out.println("# Sale requests: "+myMuseum.getSaleRequests().size());
+        // The Curator evaluates the Sale Requests
+        System.out.println(theCurator.evaulateSalesRequests(myMuseum));
+        System.out.println("# Sale requests: "+myMuseum.getSaleRequests().size());
+
+        // ---- The curator decides to put up an Artifact for auction! ---- //
+        Auctioneer adamAuctioneer = new Auctioneer();
+        Auction anAuction = theCurator.declareAuction(myMuseum,  1002, open, new Date(), adamAuctioneer, 1000);
         // Get the list of open auctions
         myMuseum.printOpenAuctions();
+
+        // Bidders submit their bids
+        collector2.submitBid(myMuseum, 1000, 14200);
+        collector1.submitBid(myMuseum, 1000, 14100);
+
+        // Auctioneer hosts the auction and declares the winner
+        System.out.println(anAuction.getAuctioneer().hostAuction(anAuction));
+
+
     }
 }

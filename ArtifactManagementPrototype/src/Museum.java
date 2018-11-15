@@ -1,4 +1,6 @@
 
+import org.omg.CORBA.ARG_IN;
+
 import java.util.*;
 
 /**
@@ -12,20 +14,24 @@ public class Museum {
     public Museum() {
     }
 
-    public Museum(String name, ArrayList<Artifact> artifactCollection, ArrayList<Auction> museumAuctions, ArrayList<SaleRequest> saleRequests, ArrayList<Transaction> transactions) {
+    public Museum(String name, ArrayList<Artifact> artifactCollection) {
         this.name = name;
         this.artifactCollection = artifactCollection;
-        this.museumAuctions = museumAuctions;
-        this.saleRequests = saleRequests;
-        this.transactions = transactions;
-
         this.museumAuctions = new ArrayList<Auction>();
+        this.saleRequests = new ArrayList<SaleRequest>();
+        this.transactions = new ArrayList<Transaction>();
+        this.saleRequestID = 19000;
     }
 
     /**
-     * 
+     *
      */
     private String name = "aMuseum";
+
+    /**
+     *
+     */
+    private int saleRequestID ;
 
     /**
      * 
@@ -72,25 +78,79 @@ public class Museum {
     }
 
     /**
-     * @param auction 
+     * @param auid
      * @param bidder 
      * @param value 
      * @return
      */
-    public String processBid(Auction auction, ArtCollector bidder, Integer value) {
-        // TODO implement here
-        return "";
+    public String processBid(int auid, ArtCollector bidder, Integer value) {
+        for (Auction thisAuction: this.getMuseumAuctions()) {
+            if (thisAuction.getAuctionID() == auid)
+            {
+                thisAuction.addBid(bidder, value);
+                return "The bid from: ("+bidder.getName()+") was submitted to Auction: ("+thisAuction.getAuctionID()+")";
+            }
+        }
+
+        return "No such Auction Exists";
     }
 
     /**
-     * @param artifact 
-     * @param seller 
-     * @param price 
      * @return
      */
-    public String processSaleRequest(Artifact artifact, ArtCollector seller, Integer price) {
-        // TODO implement here
-        return "";
+    public String processSaleRequests() {
+
+        int nSR = this.saleRequests.size();
+        if (nSR == 0) {
+            return "No sale requests";
+        }
+
+        int approvedSR=0;
+
+        for (int iter=0; iter<this.saleRequests.size(); iter++) {
+
+            SaleRequest aRequest = this.saleRequests.get(iter);
+            ArrayList<SaleRequest> tempRequests = new ArrayList<SaleRequest>();
+
+            int thisID = aRequest.getArtifact().getArtifactID();
+            for (SaleRequest request : this.saleRequests) {
+                if (request.getArtifact().getArtifactID() == thisID){
+                    tempRequests.add(request);
+                }
+            }
+
+            int bestPrice = 100000000;
+            SaleRequest bestRequest = null;
+            for (SaleRequest request : tempRequests){
+                if (request.getPrice() < bestPrice)
+                {
+                    bestRequest = request;
+                }
+
+                this.saleRequests.remove(request);
+            }
+
+            Artifact thisArtifact = bestRequest.getArtifact();
+            ArtCollector thisCollector = bestRequest.getCollector();
+            this.transactions.add(new Transaction(bestRequest.getRequestID(), thisCollector, false, false, bestPrice, thisArtifact, false));
+
+            ++approvedSR;
+        }
+
+        return "The Curator approved: ("+approvedSR+") out of: ("+nSR+") purchases";
+    }
+
+    /**
+     * @param artifact
+     * @param seller
+     * @param price
+     * @return
+     */
+    public String addSaleRequest(Artifact artifact, ArtCollector seller, Integer price) {
+
+        this.saleRequestID++;
+        this.saleRequests.add(new SaleRequest(this.saleRequestID, seller, price, artifact));
+        return "Sale Request: ("+this.saleRequestID+") accepted";
     }
 
     public void addArtifact(Artifact artifact)
