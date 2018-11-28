@@ -3,7 +3,7 @@ package Models;
 import java.util.*;
 
 /**
- * 
+ * The class for the administrator staff of the museum
  */
 public class Administrator extends MuseumStaff {
 
@@ -17,27 +17,31 @@ public class Administrator extends MuseumStaff {
     }
 
     /**
-     *
+     *  The master-key provided to admin in order to access all user accounts
      */
     private String masterKey;
 
     /**
-     *
+     *  The count of transactions processed by the admin.
      */
     private int transactionsProcessed;
 
+    /**
+     * The overridden template of the Template method.
+     * @return stats
+     **/
     @Override
     String generatePerformanceReport()
     {
         String stats;
-        stats = "Models.Administrator: ("+this.getName()+") has processed ("+this.getTransactionsProcessed() + ") transactions";
+        stats = "Administrator: ("+this.getName()+") has processed ("+this.getTransactionsProcessed() + ") transactions";
         return stats;
     }
 
     /**
-     *
-     *  I want to go through the unprocessed and make the add/remove.
-     *  Also make add/removes to the other party that is involved!
+     *  Process the approved requests. The admin delivers the artifacts to/from the museum from/to the collector
+     *  @param m
+     *  @return retS
      */
     public String processRequests(Museum m) {
         int count=0;
@@ -63,10 +67,12 @@ public class Administrator extends MuseumStaff {
 
         this.transactionsProcessed += count;
 
-        return "\nThe admin processed: (" + count + ") artifacts";
+        String retS = "\nThe admin processed: (" + count + ") artifacts";
+        return retS;
     }
 
     /**
+     * Add an artifact to the Museum
      * @param ms 
      * @param art
      */
@@ -75,9 +81,10 @@ public class Administrator extends MuseumStaff {
     }
 
     /**
+     * Remove an artifact from the museum
      * @param ms 
      * @param art 
-     * @return
+     * @return tempArt
      */
     public Artifact removeArtifact(Museum ms, Artifact art) {
         Artifact tempArt = null;

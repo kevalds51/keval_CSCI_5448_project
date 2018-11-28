@@ -3,7 +3,7 @@ package Models;
 import java.util.*;
 
 /**
- * 
+ *  The "Museum" class: the center point of the design
  */
 public class Museum {
 
@@ -23,48 +23,52 @@ public class Museum {
     }
 
     /**
-     *
+     *  The name of the Museum
      */
     private String name = "aMuseum";
 
     /**
-     *
+     *  The sale requests that will be assigned by the Museum
      */
     private int saleRequestID ;
 
     /**
-     * 
+     *  The list of the Artifacts at the Museum.
      */
     private ArrayList<Artifact> artifactCollection;
 
     /**
-     * 
+     *  The list of the Auctions hosted by the Museum.
      */
     private ArrayList<Auction> museumAuctions;
 
     /**
-     * 
+     *  The list of the Sale requests.
      */
     private ArrayList<SaleRequest> saleRequests;
 
     /**
-     * 
+     *  The list of the approved transactions.
      */
     private ArrayList<Transaction> transactions;
 
 
     /**
+     * This method will print the Artifact Catalogue of the Museum
      * @return
      */
     public void printArtifactCollection() {
-        System.out.println("\n--- The Models.Museum Catalogue (start) ---\n");
+        System.out.println("\n--- The Museum Catalogue (start) ---\n");
         int c = 0;
         for (Artifact aTemp : this.artifactCollection) {
             System.out.printf("(%d) %s%n", ++c, aTemp.printArtifactDetails());
         }
-        System.out.println("\n--- The Models.Museum Catalogue (end) ---\n");
+        System.out.println("\n--- The Museum Catalogue (end) ---\n");
     }
 
+    /**
+     * This method will print the scheduled auctions of the Museum
+     */
     public void printOpenAuctions(){
         System.out.println("\n--- Upcoming Auctions (start) ---\n");
         int c = 1;
@@ -77,25 +81,27 @@ public class Museum {
     }
 
     /**
+     * This method will process the bid submitted by a Collector
      * @param auid
      * @param bidder 
      * @param value 
-     * @return
+     * @return String
      */
     public String processBid(int auid, ArtCollector bidder, Integer value) {
         for (Auction thisAuction: this.getMuseumAuctions()) {
             if (thisAuction.getAuctionID() == auid)
             {
                 thisAuction.addBid(bidder, value);
-                return "The bid from: ("+bidder.getName()+") was submitted to Models.Auction: ("+thisAuction.getAuctionID()+")";
+                return "The bid from: ("+bidder.getName()+") was submitted toAuction: ("+thisAuction.getAuctionID()+")";
             }
         }
 
-        return "No such Models.Auction Exists";
+        return "No such Auction Exists";
     }
 
     /**
-     * @return
+     * This method will allow the Curator to look at all the Sale requests and then choose the ones to approve.
+     * @return approvedSR
      */
     public int processSaleRequests() {
 
@@ -140,6 +146,7 @@ public class Museum {
     }
 
     /**
+     * This method will process and add a sale request to the list of sale requests at the Museum.
      * @param artifact
      * @param seller
      * @param price

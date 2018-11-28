@@ -1,7 +1,7 @@
 package Models;
 
 /**
- * 
+ *  The class for a Bid.
  */
 public class Bid {
 
@@ -14,12 +14,12 @@ public class Bid {
     }
 
     /**
-     * 
+     *  The Collector who bid
      */
     private ArtCollector bidder;
 
     /**
-     * 
+     *  The bid value/amount
      */
     private Integer bidAmount;
 

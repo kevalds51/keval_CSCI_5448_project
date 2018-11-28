@@ -13,6 +13,9 @@ public class ArtCollector extends Person implements  Login{
     public ArtCollector() {
     }
 
+    /**
+     * Detailed constructor
+     */
     public ArtCollector(String name, Integer userID, Integer age, String address, String password){
         super(name, userID, age, address, password);
 
@@ -20,20 +23,26 @@ public class ArtCollector extends Person implements  Login{
     }
 
     /**
-     * 
+     * The list of the collector's artifact
      */
     private ArrayList<Artifact> myArtifacts = new ArrayList<Artifact>();
 
     /**
-     * 
+     * The status of Museum account.
      */
     private Boolean registeredAccount = false;
 
     /**
-     *
+     *  The list of collector's transactions.
      */
     private ArrayList<Transaction> myTransactions;
 
+    /**
+     * This method allows the collector to login to the museum systems
+     * @param userID
+     * @param pass
+     * @return String
+     */
     public String loginUser(Integer userID, String pass) {
         if (this.registeredAccount == false){
             return "Unregistered Account, Please register and try again.";
@@ -41,13 +50,14 @@ public class ArtCollector extends Person implements  Login{
 
         else if (this.getUserID().equals(userID) && this.getPassword().equals(pass))
         {
-            return "Collector "+this.getName()+" Models.Login Successful";
+            return "Collector "+this.getName()+" Login Successful";
         }
 
         return "Incorrect UserID/Password";
     }
 
     /**
+     * Register a new collector using this method.
      * @return
      */
     public String registerCollector() {
@@ -59,17 +69,18 @@ public class ArtCollector extends Person implements  Login{
     }
 
     /**
-     * @param museum 
-     * @return
+     * View the museum's collections.
+     * @param museum
      */
     public void viewMuseumCollection(Museum museum) {
         museum.printArtifactCollection();
     }
 
     /**
+     * Submit a bid to an open auction
      * @param museum
      * @param bidvalue
-     * @return
+     * @return String
      */
     public String submitBid(Museum museum, int auid, Integer bidvalue) {
         museum.processBid(auid, this, bidvalue);
@@ -77,10 +88,11 @@ public class ArtCollector extends Person implements  Login{
     }
 
     /**
+     * Submit a sale request to sell an artifact
      * @param museum 
      * @param myArtID
      * @param sellPrice 
-     * @return
+     * @return String
      */
     public String submitSaleRequest(Museum museum, int myArtID, Integer sellPrice) {
         Artifact thisArt = null;
@@ -101,6 +113,7 @@ public class ArtCollector extends Person implements  Login{
     }
 
     /**
+     * View the transactions so far.
      * @return
      */
     public void viewMyTransactions() {

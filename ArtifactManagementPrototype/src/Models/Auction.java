@@ -3,7 +3,7 @@ package Models;
 import java.util.*;
 
 /**
- * 
+ * The class for Auction
  */
 public class Auction {
 
@@ -13,6 +13,9 @@ public class Auction {
     public Auction() {
     }
 
+    /**
+     * Default constructor 1
+     */
     public Auction(int auctionID, Date auctionDate, Auctioneer auctioneer, Artifact artifact) {
         this.auctionID = auctionID;
         this.auctionDate = auctionDate;
@@ -21,6 +24,9 @@ public class Auction {
         this.bids = new ArrayList<Bid>();
     }
 
+    /**
+     * Default constructor 2
+     */
     public Auction(Integer auctionID, Date auctionDate, Auctioneer auctioneer, Artifact artifact, ArrayList<Bid> bids, Bid result) {
         this.auctionID = auctionID;
         this.auctionDate = auctionDate;
@@ -31,37 +37,38 @@ public class Auction {
     }
 
     /**
-     * 
+     * The unique ID given to each auction
      */
     private Integer auctionID;
 
     /**
-     * 
+     *  The date of the auction
      */
     private Date auctionDate;
 
     /**
-     * 
+     *  The auctioneer conducting the auction
      */
     private Auctioneer auctioneer;
 
     /**
-     * 
+     *  The artifact to be auctioned
      */
     private Artifact artifact;
 
     /**
-     * 
+     * The list of bids submitted
      */
     private ArrayList<Bid> bids;
 
     /**
-     * 
+     * The winning bid
      */
     private Bid result = null;
 
 
     /**
+     * This function will add a bid to the list of bids for the auction
      * @param bidder 
      * @param value 
      * @return
@@ -71,6 +78,7 @@ public class Auction {
     }
 
     /**
+     * This function will start the auction and return a winner, if any.
      * @return
      */
     public Bid goLive() {
@@ -85,8 +93,11 @@ public class Auction {
         return winner;
     }
 
+    /**
+     * This function prints the auction details
+     */
     public void printAuctionDetails(){
-        String details = "Models.Auction (ID = "+this.auctionID+")"+" of "+this.artifact.getTitle()+" ("+this.artifact.getArtifactID() + "), worth " + this.artifact.getValue() + " is scheduled on "+ this.auctionDate.toString();
+        String details = "Auction (ID = "+this.auctionID+")"+" of "+this.artifact.getTitle()+" ("+this.artifact.getArtifactID() + "), worth " + this.artifact.getValue() + " is scheduled on "+ this.auctionDate.toString();
         System.out.printf(details);
     }
 

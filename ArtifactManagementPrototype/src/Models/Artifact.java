@@ -11,6 +11,9 @@ public class Artifact {
     public Artifact() {
     }
 
+    /**
+     * Detailed constructor
+     */
     public Artifact(Integer artifactID, String title, String artistName, artifactStatus status, Integer value) {
         this.artifactID = artifactID;
         this.title = title;
@@ -20,36 +23,37 @@ public class Artifact {
     }
 
     /**
-     * 
+     *  The unique ID given to each artifact
      */
     private Integer artifactID;
 
     /**
-     *
+     *  The auction ID if the artifact is up for the auction
      */
     private Integer auctionID = null;
 
     /**
-     * 
+     *  The title of the artifact
      */
     private String title = "unknown";
 
     /**
-     * 
+     *  The name of the artist
      */
     private String artistName = "unknown";
 
     /**
-     * 
+     * The sell/auction status of the artifact
      */
     private artifactStatus status;
 
     /**
-     * 
+     * The value/worth of the artifact
      */
     private Integer value = 0;
 
     /**
+     * This function returns a single String with the details of the artifact
      * @return
      */
     public String printArtifactDetails() {

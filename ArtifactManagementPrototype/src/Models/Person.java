@@ -1,7 +1,7 @@
 package Models;
 
 /**
- * 
+ * The abstract class Person to be extended by the staff or customers
  */
 public abstract class Person implements  Login{
 
@@ -20,31 +20,32 @@ public abstract class Person implements  Login{
     }
 
     /**
-     * 
+     * The name of the person
      */
     private String name;
 
     /**
-     * 
+     * The unique ID assigned to each person
      */
     private Integer userID;
 
     /**
-     * 
+     * The age of the person
      */
     private Integer age;
 
     /**
-     * 
+     * The address of the person
      */
     private String address;
 
     /**
-     * 
+     * The password that they use for creating accounts
      */
     private String password;
 
     /**
+     * This method returns the person details as a single string
      * @return
      */
     public String printPersonDetails() {
@@ -53,6 +54,7 @@ public abstract class Person implements  Login{
     }
 
     /**
+     * This method is used to login the person into the Museum system.
      * @param userID
      * @param pass
      * @return
@@ -60,7 +62,7 @@ public abstract class Person implements  Login{
     public String loginUser(Integer userID, String pass) {
         if (this.getUserID().equals(userID) && this.getPassword().equals(pass))
         {
-            return this.name+" Models.Login Successful";
+            return this.name+" Login Successful";
         }
 
         return "Incorrect UserID/Password";

@@ -3,7 +3,7 @@ package Models;
 import java.util.*;
 
 /**
- * 
+ *  The class for modelling the "Curator"
  */
 public class Curator extends MuseumStaff {
 
@@ -19,15 +19,19 @@ public class Curator extends MuseumStaff {
     }
 
     /**
-     * 
+     *  The count of deals sealed by the curator
      */
     private Integer dealCounts = 0;
 
     /**
-     * 
+     *  The value of the highest deal ever sealed.
      */
     private Integer highestTransactionValue = 0;
 
+    /**
+     * The overridden template of the Template method.
+     * @return stats
+     **/
     @Override
     String generatePerformanceReport()
     {
@@ -37,6 +41,7 @@ public class Curator extends MuseumStaff {
     }
 
     /**
+     * This method will add an auction to the list of upcoming auctions.
      * @param artID
      * @param artSt 
      * @return
@@ -58,6 +63,7 @@ public class Curator extends MuseumStaff {
     }
 
     /**
+     * This method will allow the curator to evaluate the sale requests and choose the ones to approve.
      * @param museum 
      * @return report
      */

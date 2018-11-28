@@ -5,7 +5,7 @@ import Models.ProfitOperations.CalcSaleProfit;
 import Models.ProfitOperations.Context;
 
 /**
- * 
+ * The class signifying a "Transaction"
  */
 public class Transaction {
 
@@ -25,47 +25,48 @@ public class Transaction {
     }
 
     /**
-     * 
+     * The unique ID assigned to each transaction
      */
     private Integer transactionID;
 
     /**
-     *
+     * The profit that was generated from the transactions
      */
     private double profit;
 
     /**
-     * 
+     * The other party that bought/sold the artifact
      */
     private ArtCollector otherParty;
 
     /**
-     * 
+     * True if the transaction was an auction outcome
      */
     private Boolean isAuctionSale;
 
     /**
-     * 
+     *  True if the transaction was an approved sale request
      */
     private Boolean isPurchase;
 
     /**
-     * 
+     * The transaction amount
      */
     private Integer amount;
 
     /**
-     * 
+     * The artifact that was exchanged
      */
     private Artifact artifact;
 
     /**
-     * 
+     * Boolean for telling if the transaction was Processed or not
      */
     private Boolean adminProcessed;
 
 
     /**
+     * This method returns all transaction details as a string
      * @return detailString
      */
     public String viewTranactionDetails()
@@ -85,9 +86,12 @@ public class Transaction {
         return detailString;
     }
 
+    /**
+     * Implemented the Strategy design pattern to calculate the correct profit during runtime
+     * The classes involved in the design pattern are in the Profit Operations package
+     */
     public void calcProfit()
     {
-        // Implemented the Models.ProfitOperations.Strategy design pattern to calculate the correct profit during runtime
         if (this.getPurchase())
         {
             Context context = new Context(new CalcSaleProfit());
@@ -102,6 +106,7 @@ public class Transaction {
     }
 
     /**
+     * Returns the transactions with just the profit.
      * @return detail
      */
     public String getTransactionDetails() {

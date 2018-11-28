@@ -3,7 +3,7 @@ package Models;
 import java.util.*;
 
 /**
- * 
+ * The class for modelling the "Auctioneer" employees
  */
 public class Auctioneer extends MuseumStaff {
 
@@ -14,6 +14,9 @@ public class Auctioneer extends MuseumStaff {
 
     }
 
+    /**
+     *  Detailed constructor
+     */
     public Auctioneer(String name, Integer userID, Integer age, String address, String password, Integer annualSalary, Date joinDate) {
         super(name, userID, age, address, password, annualSalary, joinDate);
         this.auctionsHeld = 0;
@@ -21,15 +24,19 @@ public class Auctioneer extends MuseumStaff {
     }
 
     /**
-     * 
+     *  The count of auctions hosted by the Auctioneer
      */
     private Integer auctionsHeld;
 
     /**
-     * 
+     *  The rating of the Auctioneer
      */
     private Integer ratings;
 
+    /**
+     * The overridden template of the Template method.
+     * @return stats
+     **/
     @Override
     String generatePerformanceReport()
     {
@@ -39,6 +46,7 @@ public class Auctioneer extends MuseumStaff {
     }
 
     /**
+     * The method that will start the auction and declare the winner
      * @return
      * @param auction
     **/

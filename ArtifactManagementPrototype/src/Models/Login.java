@@ -3,7 +3,7 @@ package Models;
 import java.util.*;
 
 /**
- * 
+ *  The Login interface
  */
 public interface Login {
 
