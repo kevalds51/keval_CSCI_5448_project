@@ -42,8 +42,8 @@ public class Curator extends MuseumStaff {
 
     /**
      * This method will add an auction to the list of upcoming auctions.
-     * @param artID
-     * @param artSt 
+     * @param artID the unique Artifact ID
+     * @param artSt the Artifact status
      * @return
      */
     public Auction declareAuction(Museum aMuseum, int artID, artifactStatus artSt, Date aDate, Auctioneer auctioneer, int auctionID) {
@@ -64,7 +64,7 @@ public class Curator extends MuseumStaff {
 
     /**
      * This method will allow the curator to evaluate the sale requests and choose the ones to approve.
-     * @param museum 
+     * @param museum the Museum
      * @return report
      */
     public String evaulateSalesRequests(Museum museum) {

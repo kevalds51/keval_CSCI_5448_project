@@ -55,8 +55,8 @@ public abstract class Person implements  Login{
 
     /**
      * This method is used to login the person into the Museum system.
-     * @param userID
-     * @param pass
+     * @param userID The userID of the user
+     * @param pass The password of the user for the userID
      * @return
      */
     public String loginUser(Integer userID, String pass) {

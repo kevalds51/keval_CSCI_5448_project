@@ -43,7 +43,7 @@ public abstract class MuseumStaff extends Person {
     /**
      * This final method is a part of the Template design patter for generating employee reports.
      * The implementation in this final method is common to all the subclasses.
-     * @param report
+     * @param report the performance report as a string
      * @return
      */
     public final void basicReport(String report){

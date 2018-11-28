@@ -41,14 +41,14 @@ public class Auctioneer extends MuseumStaff {
     String generatePerformanceReport()
     {
         String stats;
-        stats = "Models.Auctioneer: ("+this.getName()+") has held ("+this.getAuctionsHeld() + ") auctions with Rating of: (" +this.getRatings()+")";
+        stats = "Auctioneer: ("+this.getName()+") has held ("+this.getAuctionsHeld() + ") auctions with Rating of: (" +this.getRatings()+")";
         return stats;
     }
 
     /**
      * The method that will start the auction and declare the winner
      * @return
-     * @param auction
+     * @param auction the auction to initiate
     **/
     public String hostAuction(Auction auction, Museum mu){
         Bid result = auction.goLive();

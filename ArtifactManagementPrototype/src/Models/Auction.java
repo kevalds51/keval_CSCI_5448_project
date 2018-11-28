@@ -69,8 +69,8 @@ public class Auction {
 
     /**
      * This function will add a bid to the list of bids for the auction
-     * @param bidder 
-     * @param value 
+     * @param bidder the art collector
+     * @param value the value of the bid
      * @return
      */
     public void addBid(ArtCollector bidder, Integer value) {

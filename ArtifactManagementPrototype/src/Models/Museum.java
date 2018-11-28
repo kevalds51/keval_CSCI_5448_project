@@ -82,9 +82,9 @@ public class Museum {
 
     /**
      * This method will process the bid submitted by a Collector
-     * @param auid
-     * @param bidder 
-     * @param value 
+     * @param auid the auction ID
+     * @param bidder the bidder, an Artifact Collector
+     * @param value the value of the bid
      * @return String
      */
     public String processBid(int auid, ArtCollector bidder, Integer value) {
@@ -147,9 +147,9 @@ public class Museum {
 
     /**
      * This method will process and add a sale request to the list of sale requests at the Museum.
-     * @param artifact
-     * @param seller
-     * @param price
+     * @param artifact an Artifact
+     * @param seller the seller, an Art Collector
+     * @param price the selling price demanded
      * @return
      */
     public String addSaleRequest(Artifact artifact, ArtCollector seller, Integer price) {

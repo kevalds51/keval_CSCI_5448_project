@@ -40,7 +40,7 @@ public class Administrator extends MuseumStaff {
 
     /**
      *  Process the approved requests. The admin delivers the artifacts to/from the museum from/to the collector
-     *  @param m
+     *  @param m a Museum
      *  @return retS
      */
     public String processRequests(Museum m) {
@@ -73,8 +73,8 @@ public class Administrator extends MuseumStaff {
 
     /**
      * Add an artifact to the Museum
-     * @param ms 
-     * @param art
+     * @param ms a Museum
+     * @param art an Artifact
      */
     public void addArtifact(Museum ms, Artifact art) {
         ms.addArtifact(art);
@@ -82,8 +82,8 @@ public class Administrator extends MuseumStaff {
 
     /**
      * Remove an artifact from the museum
-     * @param ms 
-     * @param art 
+     * @param ms a Museum
+     * @param art an Artifact
      * @return tempArt
      */
     public Artifact removeArtifact(Museum ms, Artifact art) {
