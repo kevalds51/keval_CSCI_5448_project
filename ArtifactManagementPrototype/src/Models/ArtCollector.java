@@ -84,7 +84,8 @@ public class ArtCollector extends Person implements  Login{
      */
     public String submitBid(Museum museum, int auid, Integer bidvalue) {
         museum.processBid(auid, this, bidvalue);
-        return "";
+        String retS = "Bid of value: (" + bidvalue + ") was submitted by" + this.getName();
+        return retS;
     }
 
     /**
@@ -118,7 +119,7 @@ public class ArtCollector extends Person implements  Login{
      */
     public void viewMyTransactions() {
         int count = 0;
-        System.out.println("Transactions of " + this.getName() +":\n");
+        System.out.println("\n\t --- Transactions of " + this.getName() +": ---\n");
         for (Transaction t1 : this.getMyTransactions()) {
             count++;
             System.out.println("("+count+") " + t1.getTransactionDetails());

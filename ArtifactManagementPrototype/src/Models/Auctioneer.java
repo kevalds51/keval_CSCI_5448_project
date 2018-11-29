@@ -59,7 +59,7 @@ public class Auctioneer extends MuseumStaff {
         mu.getTransactions().add(new Transaction(auction.getAuctionID(), result.getBidder(), true, false, result.getBidAmount(), auction.getArtifact(), false));
         setAuctionsHeld(getAuctionsHeld()+1);
         setRatings((getRatings()+result.getBidAmount()/1000));
-        return "The winner is: ("+result.getBidder().getName()+") with a bid of: ("+result.getBidAmount()+")";
+        return "Auction Declared! The winner is: ("+result.getBidder().getName()+") with a bid of: ("+result.getBidAmount()+")";
     }
 
     public Integer getAuctionsHeld() {

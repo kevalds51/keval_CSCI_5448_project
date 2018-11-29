@@ -75,12 +75,12 @@ public class Transaction {
 
         if (this.getAuctionSale())
         {
-            detailString = "("+this.getAdminProcessed()+") Models.Transaction ID: ("+this.getTransactionID()+") "+"Models.Artifact ID: ("+this.getArtifact().getArtifactID()+") "+"Amount: ("+this.getAmount()+") "+" Models.Auction winner:" + this.getOtherParty();
+            detailString = "("+this.getAdminProcessed()+") Models.Transaction ID: ("+this.getTransactionID()+") "+"Artifact ID: ("+this.getArtifact().getArtifactID()+") "+"Amount: ("+this.getAmount()+") "+" Auction winner:" + this.getOtherParty();
         }
 
         if (this.getPurchase())
         {
-            detailString = "("+this.getAdminProcessed()+") Models.Transaction ID: ("+this.getTransactionID()+") "+"Models.Artifact ID: ("+this.getArtifact().getArtifactID()+") "+"Amount: ("+this.getAmount()+") "+" Seller:" + this.getOtherParty();
+            detailString = "("+this.getAdminProcessed()+") Models.Transaction ID: ("+this.getTransactionID()+") "+"Artifact ID: ("+this.getArtifact().getArtifactID()+") "+"Amount: ("+this.getAmount()+") "+" Seller:" + this.getOtherParty();
         }
 
         return detailString;
@@ -110,7 +110,7 @@ public class Transaction {
      * @return detail
      */
     public String getTransactionDetails() {
-        String detail = "Models.Transaction ID: "+this.getTransactionID() + " Models.Artifact ID: " + this.getArtifact().getArtifactID() + " Profit/Loss: " + this.getProfit();
+        String detail = "Transaction ID: "+this.getTransactionID() + " Artifact ID: " + this.getArtifact().getArtifactID() + " Profit/Loss: " + this.getProfit();
         return detail;
     }
 
